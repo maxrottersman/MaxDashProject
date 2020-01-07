@@ -14,5 +14,5 @@ $ git push origin master
     but came back with errors. "Fatal: HttpRequestException encountered.
 "  However repo seems okay on github
 
-Now testing VC git synch with the text added above...
+Now testing VC git synch with the text added above...worked (commit 3)
 

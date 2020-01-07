@@ -16,3 +16,9 @@ $ git push origin master
 
 Now testing VC git synch with the text added above...worked (commit 3)
 
+Trying Virtualenv
+
+python -m venv .venv
+
+then added .venv/* to .gitignore
+

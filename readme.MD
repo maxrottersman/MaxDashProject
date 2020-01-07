@@ -22,3 +22,7 @@ python -m venv .venv
 
 then added .venv/* to .gitignore
 
+in case I have to do manually, something like
+source venv/bin/activate
+deactivate
+

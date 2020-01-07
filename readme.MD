@@ -26,3 +26,8 @@ in case I have to do manually, something like
 source venv/bin/activate
 deactivate
 
+pip install dash
+
+Test install
+import dash_core_components
+print(dash_core_components.__version__)

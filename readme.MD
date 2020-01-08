@@ -31,3 +31,9 @@ pip install dash
 Test install
 import dash_core_components
 print(dash_core_components.__version__)
+
+REQUIREMENTS
+dash
+pandas
+xlrd
+pathlib

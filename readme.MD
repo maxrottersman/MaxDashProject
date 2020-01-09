@@ -37,3 +37,4 @@ dash
 pandas
 xlrd
 pathlib
+sqlalchemy

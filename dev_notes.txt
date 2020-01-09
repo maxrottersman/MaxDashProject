@@ -1,0 +1,4 @@
+Notes for if I do a tutorial.
+
+Explain how callbacks worth with the implied passing of variable where names don't matter
+Explain how to really work with a call back to change data, you need to pu the component create/update out of the app.layout

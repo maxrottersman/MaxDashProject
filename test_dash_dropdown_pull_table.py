@@ -29,8 +29,33 @@ df_dropdown = pd.read_sql(sql = sql,con=db)
 
 # DASH table will ONLY work with SQLALCHEMY
 db = create_engine(db_uri)
-df = pd.read_sql_table('Data_ETFs',db)
+global df
+df= pd.read_sql_table('Data_ETFs',db)
 mgrs = df['Manager']
+
+
+
+#
+# We need to generate table outside layout so we can ALSO
+# change the table through callbacks.
+# so removed this and replaced with html.Div(id='table-container'):
+#  html.Div(id='dd-output-container'),
+
+#     dash_table.DataTable(
+#     id='table',
+#     columns=[{"name": i, "id": i} for i in df.columns],
+#     data=df.to_dict('records'),
+#     )
+def generate_table(dataframe, max_rows=10):
+    return html.Table(
+        # Header
+        [html.Tr([html.Th(col) for col in dataframe.columns])] +
+
+        # Body
+        [html.Tr([
+            html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
+        ]) for i in range(min(len(dataframe), max_rows))]
+    )
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -44,21 +69,28 @@ app.layout = html.Div([
         ],
         value=''
     ),
-    html.Div(id='dd-output-container'),
-
-    dash_table.DataTable(
-    id='table',
-    columns=[{"name": i, "id": i} for i in df.columns],
-    data=df.to_dict('records'),
-    )
+    html.Div(id='table-container')
+   
 ])
 
 @app.callback(
-    dash.dependencies.Output('dd-output-container', 'children'),
+    dash.dependencies.Output('table-container', 'children'),
     [dash.dependencies.Input('mgr-dropdown', 'value')])
-def update_output(value):
-    return 'You have selected "{}"'.format(value)
+def gen_table(dropdown_value):
+    is_Manager = df['Manager']==dropdown_value
+    # Create dataframe of those rows only by passing in those booleans
+    dff = df[is_Manager] # dff as in dataframe filtered
+    return html.Table(
+    # Header
+    [html.Tr([html.Th(col) for col in dff.columns])] +
 
+    # Body
+    [html.Tr([
+        html.Td(dff.iloc[i][col]) for col in dff.columns
+    ]) for i in range(min(len(dff), 20))]
+    )
+
+ 
 # read later
 # https://towardsdatascience.com/build-your-own-data-dashboard-93e4848a0dcf
 

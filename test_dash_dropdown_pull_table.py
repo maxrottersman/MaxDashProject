@@ -25,15 +25,11 @@ df_dropdown = pd.read_sql(sql = sql,con=db)
 #lstManagers = [x[0] for x in list(cursor.fetchall())]
 #conn.close()
 
-
-
 # DASH table will ONLY work with SQLALCHEMY
 db = create_engine(db_uri)
 global df
 df= pd.read_sql_table('Data_ETFs',db)
-mgrs = df['Manager']
-
-
+mgrs = sorted(df['Manager'].unique())
 
 #
 # We need to generate table outside layout so we can ALSO
@@ -90,7 +86,9 @@ def gen_table(dropdown_value):
     ]) for i in range(min(len(dff), 20))]
     )
 
- 
+# Userful for filtering dataframes
+# https://cmdlinetips.com/2018/02/how-to-subset-pandas-dataframe-based-on-values-of-a-column/
+
 # read later
 # https://towardsdatascience.com/build-your-own-data-dashboard-93e4848a0dcf
 

@@ -38,3 +38,4 @@ pandas
 xlrd
 pathlib
 sqlalchemy
+plotly

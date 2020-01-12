@@ -8,8 +8,6 @@ import plotly.graph_objs as go
 
 from dash.dependencies import Input, Output
 
-
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -52,7 +50,6 @@ def prepare_chart_bar_data():
     my_figure_dict = dict(graph_bars_data, **graph_layout) 
     
     return my_figure_dict
-
 
 @app.callback(
     Output('example-graph', 'figure'),

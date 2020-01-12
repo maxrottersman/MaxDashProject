@@ -112,5 +112,6 @@ def gen_graph(dropdown_value):
 
 if __name__ == '__main__':
     # Can this ever work instead of dummy callback?
-    #app.callback(Output('mgr-dropdown', 'options'))(mgr_options_build())
+    #app.callback(Output('mgr-dropdown', 'options')) (mgr_options_build())
+    
     app.run_server(debug=True)

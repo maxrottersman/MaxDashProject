@@ -39,7 +39,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 # PART 1, create our DASH layout object
 #
 app.layout = html.Div([
-    dcc.Input(id='initialize_components_dummy_callback', value='', type='text', style={'display':'none'}),
+    dcc.Input(id='dummy_callback', value='', type='text', style={'display':'none'}),
     dcc.Dropdown(id='mgr-dropdown'), 
     html.Div(id='table-container')
 ])
@@ -48,7 +48,7 @@ app.layout = html.Div([
 #
 @app.callback(
     Output(component_id='mgr-dropdown', component_property='options'),
-    [Input(component_id='initialize_components_dummy_callback', component_property='value')]
+    [Input(component_id='dummy_callback', component_property='value')]
 )
 def mgr_dropdown_BuildOptions(df_for_dropdown):  
     OptionList = [{'label': mgr, 'value': mgr} for mgr in mgrs]

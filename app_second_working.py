@@ -26,7 +26,7 @@ global db, df, mgrs
 db = create_engine(db_uri)
 
 # App's raw data
-df= pd.read_sql('Select [Symbol],[Expense Ratio],[Assets],[Manager],[Category] From Data_ETFs',db)
+df= pd.read_sql('Select [Symbol],[Full Name] as [Name], [Category], [Expense Ratio],[Assets], [Manager] From Data_ETFs',db)
 # From that, create unique Managers for Drop Down
 mgrs = sorted(df['Manager'].unique())
 
@@ -72,7 +72,12 @@ style_cell_conditional=[
         {
             'if': {'column_id': c},
             'textAlign': 'left'
-        } for c in ['Symbol', 'Manager', 'Category']
+        } for c in ['Symbol', 'Name', 'Category']
+        ] + [
+        {
+            'if': {'column_id': 'Manager'},
+            'display': 'none'
+        }
     ]
 style_data_conditional=[
         {

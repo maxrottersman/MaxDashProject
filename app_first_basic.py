@@ -98,7 +98,7 @@ def gen_table(dropdown_value):
     return data_table_populat(dropdown_value)
     
 #
-# Callback: GRAPH CRAW based on drop down selection
+# Callback: GRAPH DRAW based on drop down selection
 #  
 @app.callback(
     dash.dependencies.Output('graph-container', 'figure'),

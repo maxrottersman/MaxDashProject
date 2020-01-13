@@ -22,9 +22,7 @@ db_uri = r'sqlite:///' + str(dbPathandFile)
 
 # Connect to our db from SQLAlchemy
 # playing safe, making these global
-global db 
-global df 
-global mgrs
+global db, df, mgrs 
 db = create_engine(db_uri)
 
 # App's raw data

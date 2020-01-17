@@ -94,12 +94,15 @@ style_header={
 # PART 2, Create our clean DASH LAYOUT object
 #
 app.layout = html.Div([
+    html.H1(children='Browse ETFs'),
     dcc.Input(id='initialize_app_components_with_dummy_callback', value='', type='text', style={'display':'none'}),
     dcc.Dropdown(id='mgr-dropdown'), 
+    html.Br(),
     dash_table.DataTable(id='table-container',
         style_cell_conditional = style_cell_conditional,
         style_data_conditional = style_data_conditional,
         style_header = style_header),
+    html.H3(children='Expenses over Assets Chart'),
     dcc.Graph(id='graph-container')
 ])
 #
